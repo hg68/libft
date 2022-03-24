@@ -6,11 +6,12 @@
 /*   By: hgill <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:46:15 by hgill             #+#    #+#             */
-/*   Updated: 2022/03/22 12:11:22 by hgill            ###   ########.fr       */
+/*   Updated: 2022/03/24 17:44:32 by hgill            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static int	count_char(const char *str, char c)
 {
@@ -21,12 +22,12 @@ static int	count_char(const char *str, char c)
 	trigger = 0;
 	while (*str)
 	{
-		if (*str != c && trigger == 0)
+		if (str[i] != c && trigger == 0)
 		{
 			trigger = 1;
 			i++;
 		}
-		else if (*str == c)
+		else if (str[i] == c)
 			trigger = 0;
 		str++;
 	}
@@ -72,4 +73,18 @@ char	**ft_split(char const *s, char c)
 	}
 	split[j] = 0;
 	return (split);
+}
+
+int		main(void)
+{
+	int i = 0;
+	char **tab;
+
+	tab = ft_split("bonjour je m'appel Arthur", ' ');
+	while (i < 4)
+	{
+		printf("string %d : %s\n", i, tab[i]);
+		i++;
+	}
+	return (0);
 }
